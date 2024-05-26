@@ -3,18 +3,17 @@ import moreh from "../../assets/moreh.png";
 import { useContext, useState } from "react";
 import { DataContext } from "../../hooks/DataContext";
 const Index = ({onPatientClick}) => {
-  const { allData, loading, error } = useContext(DataContext);
+  const { allData, loading, error, fetchPatientData } = useContext(DataContext);
    const [focusedPatient, setFocusedPatient] = useState(null);
 
    if (loading) return <p>Loading...</p>;
    if (error) return <p>Error: {error}</p>;
-   
-const handlePatientClick = (name) => {
-   setFocusedPatient(name);
-  if (name === "Jessica Taylor" && window.innerWidth <= 480) {
+
+  const handlePatientClick = (name) => {
+    setFocusedPatient(name);
+    fetchPatientData(name);
     onPatientClick();
-  }
-};
+  };
 
   return (
     <div className="bg-[#fff] rounded-2xl px-4 py-8 custom-scrollbar max-h-[69rem] md:max-h-[65rem] xs:mah-h-[60rem] overflow-y-auto">

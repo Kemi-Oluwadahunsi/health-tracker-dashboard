@@ -8,18 +8,18 @@ import ArrowDown from "../../assets/ArrowDown.svg";
 const BpChart = () => {
   const chartRef = useRef(null);
   const chartInstance = useRef(null);
-  const { data, loading, error } = useContext(DataContext);
+  const { selectedPatient, loading, error } = useContext(DataContext);
 
   useEffect(() => {
-    if (data && chartRef.current) {
+    if (selectedPatient && chartRef.current) {
       const ctx = chartRef.current.getContext("2d");
 
       const months = [];
       const systolicValues = [];
       const diastolicValues = [];
 
-      if (data.diagnosis_history) {
-        data.diagnosis_history.forEach((entry) => {
+      if (selectedPatient.diagnosis_history) {
+        selectedPatient.diagnosis_history.forEach((entry) => {
           months.push(`${entry.month} ${entry.year}`);
           systolicValues.push(entry.blood_pressure.systolic.value);
           diastolicValues.push(entry.blood_pressure.diastolic.value);
@@ -74,19 +74,19 @@ const BpChart = () => {
         });
       }
     }
-  }, [data]);
+  }, [selectedPatient]);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
-  if (!data || !data.diagnosis_history) return <p>No data available</p>;
+  if (!selectedPatient || !selectedPatient.diagnosis_history) return <p>No data available</p>;
 
   // Findng the latest month entry
-  const latestEntry = data.diagnosis_history.reduce((latest, current) => {
+  const latestEntry = selectedPatient.diagnosis_history.reduce((latest, current) => {
     const latestDate = new Date(`${latest.month} 1, ${latest.year}`);
     const currentDate = new Date(`${current.month} 1, ${current.year}`);
     return currentDate > latestDate ? current : latest;
-  }, data.diagnosis_history[0]);
+  }, selectedPatient.diagnosis_history[0]);
 
   return (
     <div className="bg-[#F4F0FE] p-4 flex xs:flex-col justify-between md:w-[30rem] gap-[2rem] rounded-2xl h-[20rem] xs:h-[40rem] sm:h-[30rem] md:h-[20rem] sm:flex-col">
@@ -104,7 +104,7 @@ const BpChart = () => {
         </div>
       </div>
 
-      <div key={data.name} className="flex flex-col sm:flex-row gap-8 sm:gap-[4rem]">
+      <div key={selectedPatient.name} className="flex flex-col sm:flex-row gap-8 sm:gap-[4rem]">
         <div className="flex flex-col gap-4 md:gap-2">
           <div className="flex gap-2 items-center">
             <div className="w-4 h-4 md:w-3 md:h-3 rounded-full bg-[#C26EB4]"></div>

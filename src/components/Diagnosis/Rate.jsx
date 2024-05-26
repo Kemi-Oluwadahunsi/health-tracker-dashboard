@@ -5,12 +5,16 @@ import { useContext } from "react";
 import { DataContext } from "../../hooks/DataContext";
 
 const Rate = () => {
-  const { data, loading, error } = useContext(DataContext);
+  const { selectedPatient, loading, error } = useContext(DataContext);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
 
-  const marchData = data.diagnosis_history.find(
+  
+
+  if (!selectedPatient) return <p>Patient not found</p>;
+
+  const marchData = selectedPatient.diagnosis_history.find(
     (entry) => entry.month === "March" && entry.year === 2024
   );
 
@@ -18,7 +22,7 @@ const Rate = () => {
 
   return (
     <div className="p-2">
-      <div key={data.name}>
+      <div key={selectedPatient.name}>
         <div className="flex xs:flex-col xs:gap-8 justify-between items-center">
           <div className="bg-[#E0F3FA] basis-[30%] xs:w-[100%] h-[15rem] md:h-[14rem] sm:h-[12rem] px-4 md:px-2 justify-center xs:items-center pb-4 pt-4 md:pt-2 flex flex-col gap-4 rounded-xl">
             <div>

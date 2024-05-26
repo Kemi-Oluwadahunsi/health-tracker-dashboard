@@ -6,9 +6,11 @@ import phone from "../../assets/PhoneIcon.svg"
 import insurance from "../../assets/InsuranceIcon.svg"
 
 const User = () => {
-    const { data } = useContext(DataContext);
+    const { selectedPatient } = useContext(DataContext);
 
-    if (!data) return null;
+
+
+    if (!selectedPatient) return <p>Patient not found</p>;
 
     const formatDate = (dateString) => {
       const date = new Date(dateString);
@@ -21,15 +23,15 @@ const User = () => {
 
   return (
     <div className="bg-white md:px-2 px-4 py-8 rounded-2xl">
-      <div key={data.name} className="flex flex-col gap-8 ">
+      <div key={selectedPatient.name} className="flex flex-col gap-8 ">
         <div className="flex flex-col gap-8 items-center justify-center">
           <img
-            src={data.profile_picture}
+            src={selectedPatient.profile_picture}
             alt="Jessica"
             className="object-cover w-[200px] md:w-[120px] sm:w-[100px] xs:w-[100px]"
           />
 
-          <h2 className="font-bold text-[2rem] md:text-[1.5rem]">{data.name}</h2>
+          <h2 className="font-bold text-[1.5rem] sm:text-[1.2rem] xs:text-[1.1rem]">{selectedPatient.name}</h2>
         </div>
 
         <div className="flex flex-col gap-8 text-[0.9rem]">
@@ -39,7 +41,7 @@ const User = () => {
             </div>
             <div>
               <h3>Date of Birth</h3>
-              <p className="font-bold">{formatDate(data.date_of_birth)}</p>
+              <p className="font-bold">{formatDate(selectedPatient.date_of_birth)}</p>
             </div>
           </div>
 
@@ -49,7 +51,7 @@ const User = () => {
             </div>
             <div>
               <h3>Gender</h3>
-              <p className="font-bold">{data.gender}</p>
+              <p className="font-bold">{selectedPatient.gender}</p>
             </div>
           </div>
 
@@ -59,7 +61,7 @@ const User = () => {
             </div>
             <div>
               <h3>Contact Info</h3>
-              <p className="font-bold">{data.phone_number}</p>
+              <p className="font-bold">{selectedPatient.phone_number}</p>
             </div>
           </div>
 
@@ -69,7 +71,7 @@ const User = () => {
             </div>
             <div>
               <h3>Emergency Contact</h3>
-              <p className="font-bold">{data.emergency_contact}</p>
+              <p className="font-bold">{selectedPatient.emergency_contact}</p>
             </div>
           </div>
 
@@ -79,7 +81,7 @@ const User = () => {
             </div>
             <div>
               <h3>Insurance Provider</h3>
-              <p className="font-bold">{data.insurance_type}</p>
+              <p className="font-bold">{selectedPatient.insurance_type}</p>
             </div>
           </div>
 

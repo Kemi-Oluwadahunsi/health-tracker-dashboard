@@ -2,6 +2,7 @@ import BpChart from "./Chart"
 import Rate from "./Rate";
 
 const BloodPressure = ({ onProfileOpen }) => {
+  
   return (
     <div className="pt-[2rem] px-4 xs:px-0 flex flex-col gap-[2.5rem] md:gap-[2rem] sm:gap[1rem] bg-white rounded-2xl">
       <div className="flex justify-between items-center xs:gap-2">

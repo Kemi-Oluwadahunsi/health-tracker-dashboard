@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { DataContext } from "../../hooks/DataContext";
 
 const DiagnosticList = () => {
-  const { data, loading, error } = useContext(DataContext);
+  const { selectedPatient, loading, error } = useContext(DataContext);
 
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 480);
 
@@ -21,6 +21,9 @@ const DiagnosticList = () => {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error}</p>;
+
+  if (!selectedPatient) return <p>Patient not found</p>;
+
 
   return (
     <div className="bg-white py-[1rem] px-4 rounded-2xl ">
@@ -46,7 +49,7 @@ const DiagnosticList = () => {
                 </tr>
               </thead>
               <tbody className="">
-                {data.diagnostic_list.map((diagnostic, index) => (
+                {selectedPatient.diagnostic_list.map((diagnostic, index) => (
                   <tr key={index} className="md:text-sm sm:text-xs">
                     <td className=" h-[3rem] pl-4 ">{diagnostic.name}</td>
                     <td className="h-[3rem] pl-[3rem] md:pl-0 sm:pl-0">
@@ -61,8 +64,8 @@ const DiagnosticList = () => {
             </table>
           ) : (
             <div className="flex flex-col gap-4">
-              {data.diagnostic_list.map((diagnostic, index) => (
-                <div key={index} className="border-b py-2">
+              {selectedPatient.diagnostic_list.map((diagnostic, index) => (
+                <div key={index} className="border-b py-2 flex flex-col gap-2">
                   <div className="font-bold">Problem/Diagnosis:</div>
                   <div>{diagnostic.name}</div>
                   <div className="font-bold">Description:</div>
