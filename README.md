@@ -1,8 +1,69 @@
-# React + Vite
+# Patient Dashboard Application
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+The Patient Dashboard Application is a React-based web application built using Next.js, Vite, and Tailwind CSS. It provides a comprehensive dashboard to view and manage patient data, including a blood pressure chart and detailed diagnosis history. The application leverages various libraries such as Chart.js, @headlessui/react, and Redux Toolkit for state management.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
+
+- **Patient List**: View a list of patients with their basic details.
+- **Patient Details**: Click on a patient to view detailed diagnosis history and blood pressure charts.
+- **Blood Pressure Chart**: Visualize the blood pressure trends of the selected patient over the last six months.
+- **Responsive Design**: The application is fully responsive and works well on all devices.
+
+
+## Technologies Used
+
+- **React**
+- **Next.js**
+- **Vite**
+- **Tailwind CSS**
+- **Chart.js**
+- **@headlessui/react**
+- **Redux Toolkit**
+- **Express**
+- **MongoDB**
+
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/yourusername/patient-dashboard.git
+   ```
+2. Navigate to the project directory:
+
+   ```bash
+   cd patient-dashboard
+   ```
+3. Install the dependencies:
+   ```bash
+   npm install
+   ```
+4. Start the development server and open it in the browser:
+   ```bash
+   npm run dev
+   http://localhost:3000
+   ```
+   
+## Usage
+### Viewing Patients
+- The sidebar lists all patients fetched from the backend.
+- Click on a patient to view their details, including diagnosis history and blood pressure charts.
+  
+## Viewing Blood Pressure Chart
+- When a patient is selected, their blood pressure data over the last six months is displayed in a line chart.
+- The chart is rendered using Chart.js.
+
+## Contributing
+- Fork the repository.
+- Create a new branch (git checkout -b feature/your-feature-name).
+- Commit your changes (git commit -am 'Add some feature').
+- Push to the branch (git push origin feature/your-feature-name).
+- Create a new Pull Request.
+  
+## License
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+Contact
+For any inquiries or issues, please contact [Me](kemilat50@gmail.com).
