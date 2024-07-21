@@ -55,6 +55,13 @@ The Patient Dashboard Application is a React-based web application built using N
 - When a patient is selected, their blood pressure data over the last six months is displayed in a line chart.
 - The chart is rendered using Chart.js.
 
+  <img src="https://res.cloudinary.com/dee9teadk/image/upload/v1721581348/healthLarge_qqwwbx.png" alt="Largescreen" />
+  <img src="https://res.cloudinary.com/dee9teadk/image/upload/v1721581347/healthmedium1_ozwzxi.png" alt="tabview" />
+  <img src="https://res.cloudinary.com/dee9teadk/image/upload/v1721581347/healthmedium2_iddaea.png" alt="tavview2" />
+  <img src="https://res.cloudinary.com/dee9teadk/image/upload/v1721581347/healthsmall1_umreee.png" alt="mobile" />
+  <img src="https://res.cloudinary.com/dee9teadk/image/upload/v1721581347/healthsmall3_asdwme.png" alt="mobile" />
+
+
 ## Contributing
 - Fork the repository.
 - Create a new branch (git checkout -b feature/your-feature-name).
